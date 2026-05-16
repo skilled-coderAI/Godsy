@@ -7,14 +7,15 @@ members = [
     "crates/godsy-kb",
     "crates/godsy-agents",
     "crates/godsy-cli",
+    "src-tauri",
 ]
 
 [workspace.package]
-version = "0.1.0"
-edition = "2021"
+version = "0.2.0"
+edition = "2026"
 license = "Apache-2.0"
 authors = ["Godsy contributors"]
-repository = "https://github.com/Jay/Godsy"
+repository = "https://github.com/skilled-coderai/Godsy"
 
 [workspace.dependencies]
 godsy-core = { path = "crates/godsy-core" }

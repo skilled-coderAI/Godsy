@@ -1,0 +1,37 @@
+[package]
+name = "godsy-tauri"
+version.workspace = true
+edition = "2021"
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+
+[lib]
+name = "godsy_tauri_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+godsy-core   = { path = "../crates/godsy-core" }
+godsy-agents = { path = "../crates/godsy-agents" }
+godsy-llm    = { path = "../crates/godsy-llm" }
+
+tauri              = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-fs     = "2"
+
+toml       = { workspace = true }
+serde      = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio      = { version = "1", features = ["macros", "rt-multi-thread", "sync"] }
+tracing    = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+uuid       = { version = "1", features = ["v4"] }
+time       = { version = "0.3", features = ["formatting", "serde"] }
+
+# Silence strict workspace lints for Tauri-generated patterns
+[lints]
+workspace = true

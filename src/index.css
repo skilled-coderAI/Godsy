@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+/* ─── Godsy Design Tokens ──────────────────────────────────────────────────── */
+
+@theme {
+  /* Surfaces */
+  --color-background:       #0a0a0a;
+  --color-surface:          #111111;
+  --color-surface-elevated: #1a1a1a;
+  --color-border:           #262626;
+
+  /* Gold palette */
+  --color-gold:             #D4AF37;
+  --color-gold-muted:       #8a7228;
+  --color-gold-hover:       #e8c43a;
+  --color-gold-subtle:      #1a170e;
+
+  /* Text hierarchy */
+  --color-text-secondary:   #888888;
+  --color-text-muted:       #505050;
+
+  /* Semantic */
+  --color-success:                #22c55e;
+  --color-destructive:            #ef4444;
+  --color-destructive-foreground: #fca5a5;
+}
+
+/* ─── Base ──────────────────────────────────────────────────────────────────── */
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    width: 100%;
+    background-color: var(--color-background);
+    color: var(--color-gold);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-gold) 20%, transparent);
+    color: var(--color-gold);
+  }
+
+  input[type="range"] {
+    accent-color: var(--color-gold);
+  }
+}
+
+/* ─── Prose (markdown rendered content) ─────────────────────────────────────── */
+
+@layer components {
+  .prose-godsy {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.65;
+
+    & h1 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--color-gold);
+      margin-top: 1.5rem;
+      margin-bottom: 0.625rem;
+    }
+
+    & h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-gold);
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    & h3 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--color-gold-muted);
+      margin-top: 1rem;
+      margin-bottom: 0.375rem;
+    }
+
+    & p {
+      margin-bottom: 0.75rem;
+    }
+
+    & strong {
+      color: var(--color-gold);
+      font-weight: 600;
+    }
+
+    & em {
+      color: var(--color-text-secondary);
+    }
+
+    & ul,
+    & ol {
+      padding-left: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    & li {
+      margin-bottom: 0.25rem;
+    }
+
+    & ul li {
+      list-style-type: disc;
+    }
+
+    & ol li {
+      list-style-type: decimal;
+    }
+
+    & code {
+      background-color: var(--color-surface-elevated);
+      color: var(--color-gold-muted);
+      font-size: 0.8em;
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+      border: 1px solid var(--color-border);
+      font-family: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+    }
+
+    & pre {
+      background-color: var(--color-surface-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: 0.375rem;
+      padding: 1rem;
+      overflow-x: auto;
+      margin-bottom: 0.75rem;
+
+      & code {
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: 0.8rem;
+        color: var(--color-text-secondary);
+      }
+    }
+
+    & blockquote {
+      border-left: 2px solid color-mix(in srgb, var(--color-gold) 30%, transparent);
+      padding-left: 1rem;
+      color: var(--color-text-muted);
+      margin-bottom: 0.75rem;
+      font-style: italic;
+    }
+
+    & table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    & th {
+      border-bottom: 1px solid var(--color-border);
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+      color: var(--color-gold-muted);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    & td {
+      padding: 0.45rem 0.75rem;
+      border-bottom: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
+    }
+
+    & tr:last-child td {
+      border-bottom: none;
+    }
+
+    & a {
+      color: var(--color-gold);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+
+      &:hover {
+        color: var(--color-gold-hover);
+      }
+    }
+
+    & hr {
+      border: none;
+      border-top: 1px solid var(--color-border);
+      margin: 1rem 0;
+    }
+  }
+}
