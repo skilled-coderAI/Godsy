@@ -1,0 +1,15 @@
+/target
+**/*.rs.bk
+Cargo.lock.tmp
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+build/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+/plans-out/

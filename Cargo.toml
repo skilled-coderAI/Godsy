@@ -1,0 +1,85 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/godsy-core",
+    "crates/godsy-llm",
+    "crates/godsy-grounding",
+    "crates/godsy-kb",
+    "crates/godsy-agents",
+    "crates/godsy-cli",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+authors = ["Godsy contributors"]
+repository = "https://github.com/Jay/Godsy"
+
+[workspace.dependencies]
+godsy-core = { path = "crates/godsy-core" }
+godsy-llm = { path = "crates/godsy-llm" }
+godsy-grounding = { path = "crates/godsy-grounding" }
+godsy-kb = { path = "crates/godsy-kb" }
+godsy-agents = { path = "crates/godsy-agents" }
+
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "1"
+anyhow = "1"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "sync", "time"] }
+async-trait = "0.1"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+time = { version = "0.3", features = ["formatting", "parsing", "macros", "serde", "serde-well-known"] }
+uuid = { version = "1", features = ["v4", "serde"] }
+clap = { version = "4", features = ["derive"] }
+
+toml = "0.8"
+
+[workspace.lints.rust]
+unused = { level = "deny", priority = -1 }
+nonstandard_style = { level = "deny", priority = -1 }
+future_incompatible = { level = "deny", priority = -1 }
+rust_2018_idioms = { level = "deny", priority = -1 }
+unreachable_pub = "deny"
+missing_debug_implementations = "deny"
+
+[workspace.lints.clippy]
+all = { level = "deny", priority = -1 }
+correctness = { level = "deny", priority = -1 }
+suspicious = { level = "deny", priority = -1 }
+perf = { level = "deny", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+module_name_repetitions = "allow"
+missing_errors_doc = "allow"
+missing_panics_doc = "allow"
+must_use_candidate = "allow"
+too_many_lines = "allow"
+similar_names = "allow"
+multiple_crate_versions = "allow"
+format_push_string = "allow"
+doc_markdown = "allow"
+doc_lazy_continuation = "allow"
+if_not_else = "allow"
+uninlined_format_args = "allow"
+items_after_statements = "allow"
+unnecessary_wraps = "allow"
+needless_pass_by_value = "allow"
+unused_self = "allow"
+single_match_else = "allow"
+match_same_arms = "allow"
+cast_possible_truncation = "allow"
+cast_sign_loss = "allow"
+cast_precision_loss = "allow"
+cast_lossless = "allow"
+
+[profile.dev]
+opt-level = 0
+debug = true
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
